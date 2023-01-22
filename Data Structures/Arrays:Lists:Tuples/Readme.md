@@ -4,7 +4,7 @@ A Linear Data Structure with an ordered static & mutable collection data type st
 ### Lists
 An Ordered dyanmic & mutable Collection.
 
-### Tuple
+### Tuples
 An Ordered Immnutable data type.
 
 
