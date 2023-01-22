@@ -1,1 +1,1 @@
-# DSA-Algorithm
+# DSA
