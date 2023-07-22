@@ -1,6 +1,6 @@
+# Reverse A Array
 def reverse(data):
     return data[::-1]
-
 
 if __name__ == '__main__':
 
