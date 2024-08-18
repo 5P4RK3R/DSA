@@ -1,3 +1,4 @@
-# Summary
+# Library
 
-- [Chapter 1](./chapter_1.md)
+- [Paradigm](./Paradigm/OOPS.md)
+- [Data Types](./Paradigm/Data%20Types.md)

@@ -1,4 +1,4 @@
-file ?= main.rs
+file ?= main
 # Clean the project
 clean:
 	cargo clean
@@ -10,11 +10,15 @@ clean:
 run:
 	cargo run
 
+check:
+	cargo check
+
 build:
 	cargo build
 
 compile:
-	rustc	$(file)
+	rustc	$(file).rs
+	./$(file)
 
 doc:
 	cargo doc
