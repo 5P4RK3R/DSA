@@ -48,9 +48,9 @@ clean:
 	./cleanup.sh
 
 push:
-	git pull
 	git commit -m $(msg)
 	git push
+	git pull
 
 # Run the server
 run:
