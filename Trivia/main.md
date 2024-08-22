@@ -226,8 +226,6 @@ A typical RAII pattern involves acquiring a resource in the constructor of a cla
    };
    ```
 
-#### **Python Questions**
-
 1. **Does Python support RAII (Resource Acquisition Is Initialization)?**
 Python doesn't have RAII in the same way C++ does, but it supports similar concepts through context managers and the `with` statement. Context managers ensure that resources are properly acquired and released, similar to how RAII works in C++.
 
@@ -531,9 +529,9 @@ Python code can be optimized by:
    process.join()
    ```
 
-#### 5. **What is the difference between `threading` and `multiprocessing` in Python?**
+#### 5. **What is the difference between `multithreading` and `multiprocessing` in Python?**
    
-   - **Threading**: Uses threads within the same process, sharing memory space. Subject to the GIL, so not suitable for CPU-bound tasks but good for I/O-bound tasks.
+   - **Multithreading**: Uses threads within the same process, sharing memory space. Subject to the GIL, so not suitable for CPU-bound tasks but good for I/O-bound tasks.
    - **Multiprocessing**: Uses separate processes with their own memory space, avoiding the GIL and enabling true parallelism. More memory-intensive than threading.
 
 #### 6. **How do you avoid race conditions in Python?**
@@ -1575,3 +1573,99 @@ Here are some interview questions and answers that cover UART, USART, SPI, I2C, 
                ROS_INFO("Received: %s", data.c_str());
            }
       
+### 1. **What is CAN?**
+
+  Controller Area Network (CAN) is a robust vehicle bus standard designed to allow microcontrollers and devices to communicate with each other in applications without a host computer. It is widely used in automotive and industrial systems. Here are some common interview questions and answers related to CAN:
+
+   - CAN stands for Controller Area Network. It is a high-integrity serial data communication protocol that is widely used in automotive and industrial applications. CAN allows microcontrollers and other devices to communicate with each other without a host computer.
+
+### 2. **What are the different types of CAN?**
+   **Answer:**
+   - **Classical CAN:** The original CAN standard, which supports data rates up to 1 Mbps.
+   - **CAN FD (Flexible Data-rate):** An extension of Classical CAN, allowing data rates up to 5 Mbps and longer data frames (up to 64 bytes instead of 8).
+
+### 3. **What is the difference between standard and extended CAN?**
+   **Answer:**
+   - **Standard CAN (CAN 2.0A):** Uses an 11-bit identifier for messages, allowing 2,048 different message IDs.
+   - **Extended CAN (CAN 2.0B):** Uses a 29-bit identifier, allowing a much larger number of message IDs (over 500 million).
+
+### 4. **What is the significance of the CAN ID?**
+   **Answer:**
+   - The CAN ID serves as the identifier for each message on the network. It also determines the priority of the message, with lower CAN IDs having higher priority.
+
+### 5. **How does CAN arbitration work?**
+   **Answer:**
+   - Arbitration is the process of determining which node has control of the CAN bus when multiple nodes attempt to transmit simultaneously. The node with the highest priority message (lowest CAN ID) will continue transmitting, while others will back off and try again later.
+
+### 6. **What is the difference between the CAN high and CAN low lines?**
+   **Answer:**
+   - CAN uses a differential signaling method with two lines: CAN High (CANH) and CAN Low (CANL). During transmission, CANH goes to a higher voltage, and CANL goes to a lower voltage. This difference helps in reducing noise and improving communication reliability.
+
+### 7. **What is a CAN frame, and what are its types?**
+   **Answer:**
+   - A CAN frame is a message transmitted on the CAN bus. The types of CAN frames are:
+     - **Data Frame:** Contains the actual data payload.
+     - **Remote Frame:** Requests data from a node.
+     - **Error Frame:** Signals an error detected on the bus.
+     - **Overload Frame:** Indicates that a node needs more time to process a message.
+
+### 8. **What is the maximum data rate of CAN and CAN FD?**
+   **Answer:**
+   - The maximum data rate for Classical CAN is 1 Mbps. For CAN FD, the data rate can go up to 5 Mbps during the data phase.
+
+### 9. **Explain the concept of bit stuffing in CAN.**
+   **Answer:**
+   - Bit stuffing is a method used to ensure synchronization between nodes. After five consecutive bits of the same polarity (e.g., 11111 or 00000), a bit of opposite polarity is inserted. The receiving node automatically removes these bits to restore the original data.
+
+### 10. **What is an ACK bit in CAN?**
+   **Answer:**
+   - The ACK (Acknowledgment) bit is used to confirm the successful reception of a message. After the data and CRC fields, the transmitting node sets the ACK bit to recessive, and any node that successfully received the message sets it to dominant.
+
+### 11. **What is the role of the CRC field in a CAN frame?**
+   **Answer:**
+   - The CRC (Cyclic Redundancy Check) field is used to detect errors in the transmitted message. It contains a checksum calculated from the data field, which the receiver can use to verify the integrity of the received message.
+
+### 12. **How do you handle errors in CAN communication?**
+   **Answer:**
+   - CAN has an inbuilt error detection and handling mechanism. It uses the following techniques:
+     - **CRC Error:** If the CRC check fails, an error frame is transmitted.
+     - **Bit Error:** If a node reads a different bit value than it transmitted, it sends an error frame.
+     - **Form Error:** If a field contains invalid bits, an error frame is sent.
+     - **Acknowledgment Error:** If no node acknowledges a message, an error frame is sent.
+
+### 13. **What is a CAN node?**
+   **Answer:**
+   - A CAN node is any device or microcontroller connected to the CAN bus that can send or receive messages. Each node is independent and can act as a transmitter or receiver.
+
+### 14. **Explain the concept of "Error Frames" in CAN.**
+   **Answer:**
+   - An error frame is a special type of frame used by nodes to signal that an error has occurred on the bus. It consists of two fields: the error flag and the error delimiter. If a node detects an error in the message, it immediately transmits an error frame to notify other nodes.
+
+### 15. **What is the importance of the termination resistor in a CAN network?**
+   **Answer:**
+   - Termination resistors are used at both ends of the CAN bus to prevent signal reflections, which can cause interference and data corruption. Typically, a 120-ohm resistor is used at each end.
+
+### 16. **What is a CAN transceiver, and why is it needed?**
+   **Answer:**
+   - A CAN transceiver converts the CAN protocol signals from the controller (typically digital signals) into the differential signals required on the CAN bus and vice versa. It also provides the necessary physical layer to interface with the CAN bus.
+
+### 17. **How is CAN used in automotive systems?**
+   **Answer:**
+   - In automotive systems, CAN is used for in-vehicle communication between different electronic control units (ECUs) like the engine control unit, transmission, airbags, antilock braking systems, and infotainment systems.
+
+### 18. **What is the difference between CAN and LIN?**
+   **Answer:**
+   - **CAN (Controller Area Network):** Higher speed (up to 1 Mbps), robust, supports multi-master communication, used for critical systems.
+   - **LIN (Local Interconnect Network):** Lower speed (up to 20 Kbps), single master with multiple slaves, used for non-critical systems like window controls, seat adjustments.
+
+### 19. **What is the CANopen protocol?**
+   **Answer:**
+   - CANopen is a higher-layer protocol based on CAN. It provides standardized communication services for real-time control, including device profiles for different types of equipment, allowing devices from different manufacturers to interoperate on the same CAN network.
+
+### 20. **How do you troubleshoot CAN bus communication issues?**
+   **Answer:**
+   - **Check Termination:** Ensure that termination resistors are properly placed.
+   - **Monitor Bus Traffic:** Use a CAN analyzer to monitor messages and identify any errors.
+   - **Check Wiring:** Inspect the wiring for any physical damage or loose connections.
+   - **Check for Overload:** Ensure the bus is not overloaded with too many messages, which can cause arbitration delays or errors.
+
